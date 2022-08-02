@@ -230,14 +230,14 @@ class RRT:
         neighborhood_points = self.getPointsInNeighborhood(point, neighborhood)
         for neighbor in neighborhood_points:
 
-            raise NotImplementedError('[STUDENTS TODO] Getting node parents in RRT* not implemented. You have to finish it.')
             # Tips:
             #  - look for neighbor which when connected yields minimal path cost all the way back to the start
             #  - you might need functions 'self.tree.get_cost()' or 'distEuclidean()'
 
-            # TODO: fill these two variables
-            cost = float('inf') 
-            parent = closest_point
+            cost_neighbor = self.tree.get_cost(neighbor) + distEuclidean(point, neighbor)
+            if cost_neighbor < cost:
+                parent = neighbor
+                cost = cost_neighbor
 
         return parent, cost
     # # #}
